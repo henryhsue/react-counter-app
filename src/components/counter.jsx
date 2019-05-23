@@ -5,8 +5,8 @@ class Counter extends Component {
   // Only state can be modified, no props. Props is read only.
   state = {
     // fix the state before we increment it
-    value: this.props.value,
-    name: this.props.name,
+    value: this.props.counter.value,
+    name: this.props.counter.name,
     tags: ["tag1", "tag2", "tag3"]
   };
 
@@ -73,7 +73,7 @@ class Counter extends Component {
           state is located within Counters, onDelete must be implemented
           there to modify it locally.*/}
           <button
-            onClick={() => this.props.onDelete(this.props.id)}
+            onClick={() => this.props.onDelete(this.props.counter.id)}
             className="btn btn-danger btn-sm m-2"
           >
             Delete
