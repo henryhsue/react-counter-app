@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   // state object has a count component
+  // Only state can be modified, no props. Props is read only.
   state = {
     // fix the state before we increment it
     value: this.props.value,
