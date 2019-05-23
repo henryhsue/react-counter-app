@@ -4,7 +4,8 @@ class Counter extends Component {
   // state object has a count component
   state = {
     // fix the state before we increment it
-    count: 0,
+    value: this.props.value,
+    name: this.props.name,
     tags: ["tag1", "tag2", "tag3"]
   };
 
@@ -26,8 +27,7 @@ class Counter extends Component {
   // when this is called, react will update the dom at just the span
   // where the count is located.
   handleIncrement = product => {
-    console.log(product);
-    this.setState({ count: this.state.count + 1 });
+    this.setState({ value: this.state.value + 1 });
   };
 
   renderTags() {
@@ -53,25 +53,28 @@ class Counter extends Component {
     return (
       <div>
         <div>
+          <h4>{this.state.name}</h4>
           <span style={this.styles} className={this.getBadgeClasses()}>
             {this.formatCount()}
           </span>
           <button
-            onClick={() => this.handleIncrement({ productID })}
+            onClick={() => this.handleIncrement()}
             className="btn btn-secondary btn-sm"
           >
             Increment
           </button>
         </div>
+        {/* Display tags 
         <div>{this.state.tags.length === 0 && "Please create a new tag"}</div>
         <div>{this.renderTags()}</div>
+        */}
       </div>
     );
   }
 
   getBadgeClasses() {
     let classes = "badge m-2 badge-";
-    classes += this.state.count === 0 ? "warning" : "primary";
+    classes += this.state.value === 0 ? "warning" : "primary";
     return classes;
   }
 
@@ -79,9 +82,9 @@ class Counter extends Component {
   formatCount() {
     // pick count property within state using object destructuring
     // rather than do this.state.count
-    const { count } = this.state;
+    const { value } = this.state;
     // === is equal comparison
-    return count === 0 ? "Zero" : count;
+    return value === 0 ? "Zero" : value;
     // "Zero" or JSX like <h1>Zero</h1>
   }
 }
