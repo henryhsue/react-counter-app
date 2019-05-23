@@ -69,6 +69,15 @@ class Counter extends Component {
           >
             Increment
           </button>
+          {/*access another components' prop, the onDelete, since
+          state is located within Counters, onDelete must be implemented
+          there to modify it locally.*/}
+          <button
+            onClick={() => this.props.onDelete(this.props.id)}
+            className="btn btn-danger btn-sm m-2"
+          >
+            Delete
+          </button>
         </div>
         {/* Display tags 
         <div>{this.state.tags.length === 0 && "Please create a new tag"}</div>
