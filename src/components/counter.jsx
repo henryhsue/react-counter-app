@@ -57,11 +57,12 @@ class Counter extends Component {
           <span style={this.styles} className={this.getBadgeClasses()}>
             {this.formatCount()}
           </span>
-          <button
-            {/* note that this is no longer passing a reference to handleIncrement, 
+          {/* note that onClick below is no longer passing a reference to handleIncrement, 
             it is passing a reference to a created arrow function that calls handleIncrement. 
             That safely ensures that this will refer to the object of the method. 
-            Arrow functions bind to the object of the class.*/}
+            Arrow functions bind to the object of the class. 
+          */}
+          <button
             onClick={() => this.handleIncrement()}
             className="btn btn-secondary btn-sm"
           >
